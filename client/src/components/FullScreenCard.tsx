@@ -17,5 +17,5 @@ FullScreenCard.Body = function ({ children }: FullScreenCardProps) {
 }
 
 FullScreenCard.BelowCard = function ({ children }: FullScreenCardProps) {
-	return <div className="mt-3 flex justify-center gap-3">{children}</div>
+	return <div className="mt-3 flex justify-center gap-2">{children}</div>
 }
