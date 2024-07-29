@@ -1,7 +1,7 @@
 import { FormEvent, useRef } from 'react'
 import { Input } from '../components/Input'
 import { Button } from '../components/Button'
-import { useAuth } from '../context/hooks'
+import { useAuth } from '../hooks/useAuth'
 
 export function Signup() {
 	const { signup } = useAuth()

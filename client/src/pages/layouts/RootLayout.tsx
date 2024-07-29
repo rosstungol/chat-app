@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from 'react-router-dom'
-import { useAuth } from '../../context/hooks'
+import { useAuth } from '../../hooks/useAuth'
 
 export function RootLayout() {
 	const { user } = useAuth()
