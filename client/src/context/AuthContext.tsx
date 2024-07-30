@@ -10,6 +10,7 @@ export type AuthContext = {
 	streamChat?: StreamChat
 	signup: UseMutationResult<AxiosResponse, unknown, User>
 	login: UseMutationResult<{ token: string; user: User }, unknown, string>
+	logout: UseMutationResult<AxiosResponse, unknown, void>
 }
 
 export const Context = createContext<AuthContext | null>(null)
@@ -52,6 +53,17 @@ export function AuthProvider({ children }: AuthProviderProps) {
 		},
 	})
 
+	const logout = useMutation({
+		mutationFn: () => {
+			return axios.post(`${import.meta.env.VITE_SERVER_URL}/logout`, { token })
+		},
+		onSuccess() {
+			setUser(undefined)
+			setToken(undefined)
+			setStreamChat(undefined)
+		},
+	})
+
 	useEffect(() => {
 		if (user == null || token == null) return
 		const chat = new StreamChat(import.meta.env.VITE_STREAM_API_KEY!)
@@ -73,7 +85,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 	}, [user, token])
 
 	return (
-		<Context.Provider value={{ signup, login, user, streamChat }}>
+		<Context.Provider value={{ signup, login, logout, user, streamChat }}>
 			{children}
 		</Context.Provider>
 	)
