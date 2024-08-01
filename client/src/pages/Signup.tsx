@@ -40,7 +40,7 @@ export function Signup() {
 					<Label labelFor="imageUrl">Image URL</Label>
 					<Input id="username" type="url" ref={imageUrlRef} />
 				</div>
-				<Button disabled={signup.isPending} type="submit">
+				<Button variant="primary" disabled={signup.isPending} type="submit">
 					{signup.isPending ? 'Loading...' : 'Sign up'}
 				</Button>
 			</form>

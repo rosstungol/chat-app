@@ -101,7 +101,11 @@ export function NewChannel() {
 							})}
 						/>
 					</div>
-					<Button disabled={createChannel.isPending} type="submit">
+					<Button
+						variant="primary"
+						disabled={createChannel.isPending}
+						type="submit"
+					>
 						{createChannel.isPending ? 'Loading...' : 'Create'}
 					</Button>
 				</form>

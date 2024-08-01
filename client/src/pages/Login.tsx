@@ -31,7 +31,7 @@ export function Login() {
 					<Label labelFor="username">Username</Label>
 					<Input id="username" required ref={usernameRef} />
 				</div>
-				<Button disabled={login.isPending} type="submit">
+				<Button variant="primary" disabled={login.isPending} type="submit">
 					{login.isPending ? 'Loading...' : 'Log In'}
 				</Button>
 			</form>
