@@ -13,9 +13,9 @@ export function FullScreenCard({ children }: FullScreenCardProps) {
 }
 
 FullScreenCard.Body = function ({ children }: FullScreenCardProps) {
-	return <div className="rounded-lg bg-white p-6 shadow">{children}</div>
+	return <div className="m-4 rounded-lg bg-white p-8 shadow-md">{children}</div>
 }
 
 FullScreenCard.BelowCard = function ({ children }: FullScreenCardProps) {
-	return <div className="mt-3 flex justify-center gap-2">{children}</div>
+	return <div className="mt-4 flex justify-center gap-2">{children}</div>
 }

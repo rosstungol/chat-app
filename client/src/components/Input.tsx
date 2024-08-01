@@ -6,7 +6,7 @@ export const Input = forwardRef<
 >(({ className, ...rest }, ref) => {
 	return (
 		<input
-			className={`w-full rounded border border-slate-400 px-2 py-1 outline-none transition-colors focus:border-blue-500 ${className}`}
+			className={`w-full rounded border border-slate-300 px-2 py-1 outline-none transition-colors hover:border-blue-500 focus:border-blue-500 ${className}`}
 			{...rest}
 			ref={ref}
 		/>

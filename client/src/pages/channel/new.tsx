@@ -7,6 +7,7 @@ import { Link } from '../../components/Link'
 import Select, { SelectInstance } from 'react-select'
 import { useLoggedInAuth } from '../../hooks/useLoggedInAuth'
 import { useNavigate } from 'react-router-dom'
+import { Label } from '../../components/Label'
 
 export function NewChannel() {
 	const { streamChat, user } = useLoggedInAuth()
@@ -77,31 +78,30 @@ export function NewChannel() {
 				<h1 className="mb-8 text-center text-3xl font-bold">
 					New Conversation
 				</h1>
-				<form
-					onSubmit={handleSubmit}
-					className="grid grid-cols-[auto,1fr] items-center justify-items-end gap-x-3 gap-y-5"
-				>
-					<label htmlFor="name">Name</label>
-					<Input id="name" ref={nameRef} required />
-					<label htmlFor="imageUrl">Image URL</label>
-					<Input id="imageUrl" ref={imageUrlRef} />
-					<label htmlFor="members">Members</label>
-					<Select
-						id="members"
-						ref={memberIdsRef}
-						required
-						isMulti
-						classNames={{ container: () => 'w-full' }}
-						isLoading={users.isPending}
-						options={users.data?.users.map((user) => {
-							return { value: user.id, label: user.name || user.id }
-						})}
-					/>
-					<Button
-						disabled={createChannel.isPending}
-						type="submit"
-						className="col-span-full"
-					>
+				<form onSubmit={handleSubmit} className="space-y-5">
+					<div>
+						<Label labelFor="name">Name</Label>
+						<Input id="name" ref={nameRef} required />
+					</div>
+					<div>
+						<Label labelFor="imageUrl">Image URL</Label>
+						<Input id="imageUrl" ref={imageUrlRef} />
+					</div>
+					<div>
+						<Label labelFor="members">Members</Label>
+						<Select
+							id="members"
+							ref={memberIdsRef}
+							required
+							isMulti
+							classNames={{ container: () => 'w-full' }}
+							isLoading={users.isPending}
+							options={users.data?.users.map((user) => {
+								return { value: user.id, label: user.name || user.id }
+							})}
+						/>
+					</div>
+					<Button disabled={createChannel.isPending} type="submit">
 						{createChannel.isPending ? 'Loading...' : 'Create'}
 					</Button>
 				</form>
