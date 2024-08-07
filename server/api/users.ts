@@ -9,24 +9,6 @@ const streamChat = StreamChat.getInstance(
 const TOKEN_USER_ID_MAP = new Map<string, string>()
 
 export async function userRoutes(app: FastifyInstance) {
-  app.get("/", async (req, res) => {
-    const html = `
-      <!DOCTYPE html>
-      <html lang="en">
-        <head>
-          <meta charset="UTF-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <title>Chat App Server</title>
-        </head>
-        <body>
-          <h1>Chat App Server</h1>
-        </body>
-      </html>
-    `
-
-    return res.status(200).type("text/html").send(html)
-  })
-
   app.post<{ Body: { id: string; name: string; image?: string } }>(
     "/signup",
     async (req, res) => {
