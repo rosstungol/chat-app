@@ -18,6 +18,9 @@ import { Button } from '../components/Button'
 export function Home() {
 	const { user, streamChat } = useLoggedInAuth()
 
+	const filters = { members: { $in: [user.id] }, type: 'messaging' }
+	const options = { presence: true, state: true }
+
 	if (streamChat == null) return <LoadingIndicator />
 
 	return (
@@ -26,9 +29,10 @@ export function Home() {
 				<ChannelList
 					List={Channels}
 					sendChannelsToList
-					filters={{ members: { $in: [user.id] } }}
+					filters={filters}
+					options={options}
 				/>
-				<section className="flex-auto p-3">
+				<section className="flex-auto">
 					<Channel>
 						<Window>
 							<ChannelHeader />
